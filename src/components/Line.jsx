@@ -1,17 +1,19 @@
 function Line(props) {
   const datasF = props.datas;
   const searchF = props.search;
+  let count = 0;
 
   return (
     <>
       <div className="line-all">
         {datasF.data.map((elem) => {
           const test = elem.keywords.search(searchF);
-          if (test !== -1) {
+          if (test !== -1 && count < 20) {
+            count++;
             return (
               <>
                 <div className="line">
-                  <p>
+                  <p key={elem.title}>
                     {elem.symbol} {elem.title}
                   </p>
                   <input
@@ -22,6 +24,7 @@ function Line(props) {
                     readOnly="readOnly"
                   />
                   <p
+                    className="copyOnClick"
                     onClick={() => {
                       // get the text to copy
                       const idSymbol = elem.symbol;
@@ -40,6 +43,8 @@ function Line(props) {
                 </div>
               </>
             );
+          } else {
+            return null;
           }
         })}
       </div>

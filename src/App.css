@@ -53,6 +53,13 @@ input {
   height: 60vh;
   width: 100%;
 }
+
+.copyOnClick {
+  cursor: pointer;
+}
+.copyOnClick:hover {
+  font-weight: bold;
+}
 .line {
   display: flex;
   align-items: center;
